@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sorry 💖</title>
+<style>
+  body {
+    font-family: Arial;
+    background: #ffe6f0;
+    text-align: center;
+    padding-top: 50px;
+  }
+  .card {
+    background: white;
+    padding: 20px;
+    max-width: 400px;
+    margin: auto;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    position: relative;
+    min-height: 200px;
+  }
+  button {
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  #yesBtn, #yesBtn2, #yesBtn3 {
+    background: #ff4d88;
+    color: white;
+  }
+  #noBtn, #noBtn2, #noBtn3 {
+    background: #cccccc;
+    position: relative;
+  }
+  .hidden {
+    display: none;
+  }
+  .sticker {
+    font-size: 60px;
+  }
+</style>
+</head>
+<body>
+
+<!-- Step 1: Apology -->
+<div class="card" id="step1">
+  <h2>I’m really sorry 😔</h2>
+  <p>Can you forgive me?</p>
+  <button id="yesBtn" onclick="forgive()">Yes</button>
+  <button id="noBtn" onmouseover="moveNo('noBtn')">No</button>
+</div>
+
+<!-- New Step 2: Ask to go outside to eat -->
+<div class="card hidden" id="step2">
+  <h2>If we can go outside to eat today? 🍽️</h2>
+  <button id="yesBtn3" onclick="goEatYes()">Yes</button>
+  <button id="noBtn3" onmouseover="moveNo('noBtn3')">No</button>
+</div>
+
+<!-- Old Step 2 becomes Step 3 -->
+<div class="card hidden" id="step3">
+  <div class="sticker">🥺💖🎉</div>
+  <h2>Yaaaaay!</h2>
+  <p>I'm so sorry my love. I will be better for you. I love youu!!!!!</p>
+  <button onclick="askValentine()">Next</button>
+</div>
+
+<!-- Old Step 3 becomes Step 4 -->
+<div class="card hidden" id="step4">
+  <h2>Will you be my Valentine? 💘</h2>
+  <button id="yesBtn2" onclick="finalYes()">Yes</button>
+  <button id="noBtn2" onmouseover="moveNo('noBtn2')">No</button>
+</div>
+
+<!-- Old Step 4 becomes Step 5 -->
+<div class="card hidden" id="step5">
+  <div class="sticker">😍🌹💝</div>
+  <h2>Thank you for being my valentine!</h2>
+  <p>I love you.</p>
+</div>
+
+<script>
+  // Makes the No button dodge/move randomly within 250px area
+  function moveNo(btnId) {
+    const b = document.getElementById(btnId);
+    b.style.position = 'absolute';
+    b.style.left = Math.random() * 250 + 'px';
+    b.style.top = Math.random() * 150 + 'px';
+  }
+
+  // Step 1 to Step 2 (Apology to Eating question)
+  function forgive() {
+    document.getElementById('step1').classList.add('hidden');
+    document.getElementById('step2').classList.remove('hidden');
+  }
+
+  // Step 2 to Step 3 (Eating question to Sorry message)
+  function goEatYes() {
+    document.getElementById('step2').classList.add('hidden');
+    document.getElementById('step3').classList.remove('hidden');
+  }
+
+  // Step 3 to Step 4 (Sorry message to Valentine ask)
+  function askValentine() {
+    document.getElementById('step3').classList.add('hidden');
+    document.getElementById('step4').classList.remove('hidden');
+  }
+
+  // Step 4 to Step 5 (Valentine yes to thank you)
+  function finalYes() {
+    document.getElementById('step4').classList.add('hidden');
+    document.getElementById('step5').classList.remove('hidden');
+  }
+</script>
+
+</body>
+</html>
